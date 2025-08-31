@@ -1,0 +1,32 @@
+{
+	"name": "Minecraft Plugin AI Creator",
+	// Use a Docker image with Java 21 and other basic tools pre-installed.
+	"image": "mcr.microsoft.com/devcontainers/java:0-21",
+
+	// Install Maven using devcontainer features.
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "none",
+			"installMaven": "true",
+			"installGradle": "false"
+		}
+	},
+
+	// Configure VSCode settings and extensions.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"Google.gemini"
+			]
+		}
+	},
+
+	// Commands to run after the container is created.
+	// 1. Download the latest PaperMC server jar (for Minecraft 1.21).
+	// 2. Automatically agree to the EULA to streamline the first server launch.
+	"postCreateCommand": "bash -c \"(wget https://api.papermc.io/v2/projects/paper/versions/1.21/builds/79/downloads/paper-1.21-79.jar -O ./server/paper.jar) && (echo eula=true > ./server/eula.txt)\"",
+
+	// Run as the default 'vscode' user.
+	"remoteUser": "vscode"
+}
