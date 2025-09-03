@@ -31,7 +31,7 @@
 	// Commands to run after the container is created.
 	// 1. Download the latest PaperMC server jar (for Minecraft 1.21).
 	// 2. Automatically agree to the EULA to streamline the first server launch.
-	"postCreateCommand": ".devcontainer/post-create.sh",
+	"postCreateCommand": "bash scripts/setup_devcontainer.sh",
 
 	// Run as the default 'vscode' user.
 	"remoteUser": "vscode"
