@@ -9,6 +9,9 @@
 			"version": "none",
 			"installMaven": "true",
 			"installGradle": "false"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
 		}
 	},
 
@@ -20,7 +23,8 @@
 				"redhat.java",
         		"eamodio.gitlens",
 				"mhutchie.git-graph",
-				"google.geminicodeassist"
+				"google.geminicodeassist",
+				"google.gemini-cli-vscode-ide-companion"
 			]
 		}
 	},
@@ -28,7 +32,7 @@
 	// Commands to run after the container is created.
 	// 1. Download the latest PaperMC server jar (for Minecraft 1.21).
 	// 2. Automatically agree to the EULA to streamline the first server launch.
-	"postCreateCommand": "bash -c \"([ -d run ] || cp -rn run-template run) && (wget https://api.papermc.io/v2/projects/paper/versions/1.21.8/builds/56/downloads/paper-1.21.8-56.jar -O ./run/paper.jar)\"",
+	"postCreateCommand": "bash -c \"npm install -g @google/gemini-cli && ([ -d run ] || cp -rn run-template run) && (wget https://api.papermc.io/v2/projects/paper/versions/1.21.8/builds/56/downloads/paper-1.21.8-56.jar -O ./run/paper.jar)\"",
 
 	// Run as the default 'vscode' user.
 	"remoteUser": "vscode"
