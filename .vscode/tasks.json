@@ -4,7 +4,7 @@
         {
             "label": "Build Plugin",
             "type": "shell",
-            "command": "mvn package",
+            "command": "mvn package && ./scripts/copy_plugin.sh",
             "group": {
                 "kind": "build",
                 "isDefault": true
