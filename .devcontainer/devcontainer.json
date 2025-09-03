@@ -1,7 +1,7 @@
 {
 	"name": "Minecraft Plugin AI Creator",
 	// Use a Docker image with Java 21 and other basic tools pre-installed.
-	"image": "mcr.microsoft.com/devcontainers/java:0-21",
+	"image": "mcr.microsoft.com/devcontainers/java:21",
 
 	// Install Maven using devcontainer features.
 	"features": {
@@ -17,7 +17,10 @@
 		"vscode": {
 			"extensions": [
 				"vscjava.vscode-java-pack",
-				"Google.gemini"
+				"redhat.java",
+        		"eamodio.gitlens",
+				"mhutchie.git-graph",
+				"google.geminicodeassist"
 			]
 		}
 	},
