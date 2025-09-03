@@ -35,5 +35,13 @@
 	"postAttachCommand": "bash scripts/configure_project.sh",
 
 	// Run as the default 'vscode' user.
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+
+	// ポートに名前をつける
+	"portsAttributes": {
+		"25565": {
+			"label": "Minecraft",
+			"requireLocalPort": true
+		}
+	}
 }
