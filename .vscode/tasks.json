@@ -4,7 +4,7 @@
         {
             "label": "Build Plugin",
             "type": "shell",
-            "command": "mvn clean package",
+            "command": "mvn package",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -19,7 +19,18 @@
                 "cwd": "${workspaceFolder}/run"
             },
             "isBackground": true,
-            "problemMatcher": []
+            "problemMatcher": {
+                "owner": "java-debug-server",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^.*Listening for",
+                    "endsPattern": "^.*transport dt_socket at address.*"
+                }
+            },
+            "dependsOn": ["Build Plugin"]
         }
     ]
 }
