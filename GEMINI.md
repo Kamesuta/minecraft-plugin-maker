@@ -26,7 +26,7 @@ Gemini will then modify `Main.java` to add this feature.
 
 Once you've made your code changes, you need to build the plugin and test it.
 
-1.  **Build:** Press `Ctrl+Shift+B`. This will run the `Build Plugin` task, which compiles your code and packages it into a `.jar` file. The file will be placed in the `server/plugins/` directory.
+1.  **Build:** Press `Ctrl+Shift+B`. This will run the `Build Plugin` task, which compiles your code and packages it into a `.jar` file. The file will be placed in the `run/plugins/` directory.
 
 2.  **Run & Debug:**
     - Press `F5` to start the Minecraft server in debug mode.
