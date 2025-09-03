@@ -17,4 +17,6 @@ npm install -g @google/gemini-cli
 # Set up the Minecraft server environment
 ./scripts/setup_server.sh
 
+
+
 echo "★ セットアップスクリプトが完了しました。"

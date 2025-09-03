@@ -32,6 +32,7 @@
 	// 1. Download the latest PaperMC server jar (for Minecraft 1.21).
 	// 2. Automatically agree to the EULA to streamline the first server launch.
 	"postCreateCommand": "bash scripts/setup_devcontainer.sh",
+	"postAttachCommand": "bash scripts/configure_project.sh",
 
 	// Run as the default 'vscode' user.
 	"remoteUser": "vscode"
