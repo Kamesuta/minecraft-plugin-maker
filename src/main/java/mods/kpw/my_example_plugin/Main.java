@@ -1,4 +1,4 @@
-package mods.kpw.silly_ferret;
+package mods.kpw.my_example_plugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -6,13 +6,13 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Hello from the SillyFerret plugin!");
+        getLogger().info("Hello from my Minecraft plugin!");
         // Your plugin startup logic here
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("SillyFerret plugin has been disabled.");
+        getLogger().info("Goodbye.");
         // Your plugin shutdown logic here
     }
 }

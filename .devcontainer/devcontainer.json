@@ -1,5 +1,4 @@
 {
-	"name": "Minecraft Plugin AI Creator",
 	// Use a Docker image with Java 21 and other basic tools pre-installed.
 	"image": "mcr.microsoft.com/devcontainers/java:21",
 

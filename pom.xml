@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mods.kpw</groupId>
-    <artifactId>silly-ferret</artifactId>
+    <artifactId>my_example_plugin</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>MyFirstPlugin</name> <!-- This will be replaced by a random name -->
+    <name>MyExamplePlugin</name> <!-- This will be replaced by a random name -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

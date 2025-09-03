@@ -2,15 +2,30 @@
 
 Welcome! This guide will walk you through customizing and building your first Minecraft plugin with the help of AI.
 
-## Step 1: Name Your Plugin
+## Step 1: Configure Your Plugin
 
-Your plugin needs a unique name. This is the name that will appear in-game and in server logs.
+Your plugin needs a unique name and package structure. This is how it will be identified by the server and other plugins.
 
-1.  Open the `src/main/resources/plugin.yml` file.
-2.  Find the line `name: SillyFerret`.
-3.  Change `SillyFerret` to your desired plugin name. For example: `name: SuperJumpBoots`.
+1.  **Set the Plugin Name:**
+    - Open the `src/main/resources/plugin.yml` file.
+    - Find the line `name: MyExamplePlugin`.
+    - Change `MyExamplePlugin` to your desired plugin name (e.g., `name: SuperJumpBoots`).
 
-**This step is mandatory!**
+2.  **Set the Main Class Path:**
+    - In the same `plugin.yml` file, find the `main` line.
+    - Change the package part of `mods.kpw.my_example_plugin.Main` to your new, unique package name. A common convention is `mods.kpw.pluginname`.
+    - For example: `main: mods.kpw.superjumpboots.Main`
+
+3.  **Update the Directory Structure:**
+    - Rename the directory `src/main/java/mods/kpw/my_example_plugin` to match the new package structure you defined in the previous step.
+    - For example: `src/main/java/mods/kpw/superjumpboots`
+
+4.  **Update the Java Package:**
+    - Open the `Main.java` file located in your newly renamed directory.
+    - Change the package declaration at the top of the file to match your new package name.
+    - For example: `package mods.kpw.superjumpboots;`
+
+**This configuration is mandatory!**
 
 ## Step 2: Start Coding with AI
 
