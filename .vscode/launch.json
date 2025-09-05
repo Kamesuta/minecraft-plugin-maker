@@ -3,11 +3,11 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Attach to Minecraft Server",
+            "name": "Build and Start Server",
             "request": "attach",
             "hostName": "localhost",
             "port": 5005,
-            "preLaunchTask": "Start Minecraft Server (Debug Mode)"
+            "preLaunchTask": "Build and Start Server"
         }
     ]
 }

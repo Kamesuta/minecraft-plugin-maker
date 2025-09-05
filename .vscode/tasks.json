@@ -12,7 +12,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Start Minecraft Server (Debug Mode)",
+            "label": "Start Server",
             "type": "shell",
             "command": "java -Xmx2G -Xms2G -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar paper.jar --nogui",
             "options": {
@@ -29,8 +29,15 @@
                     "beginsPattern": "^.*Listening for",
                     "endsPattern": "^.*transport dt_socket at address.*"
                 }
-            },
-            "dependsOn": ["Build Plugin"]
+            }
+        },
+        {
+            "label": "Build and Start Server",
+            "dependsOn": [
+                "Build Plugin",
+                "Start Server"
+            ],
+            "dependsOrder": "sequence"
         }
     ]
 }
