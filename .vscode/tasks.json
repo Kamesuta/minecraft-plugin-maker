@@ -29,15 +29,35 @@
                     "beginsPattern": "^.*Listening for",
                     "endsPattern": "^.*transport dt_socket at address.*"
                 }
+            },
+            "dependsOn": [
+                "Build Plugin",
+            ]
+        },
+        {
+            "label": "Open Port",
+            "type": "shell",
+            "command": "./scripts/securesharenet",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "secure-share-net",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^コントロールURL:",
+                    "endsPattern": "^コントロールURL:"
+                }
             }
         },
         {
-            "label": "Build and Start Server",
+            "label": "Start Server and Open Port",
             "dependsOn": [
-                "Build Plugin",
-                "Start Server"
+                "Start Server",
+                "Open Port"
             ],
-            "dependsOrder": "sequence"
+            "dependsOrder": "parallel"
         }
     ]
 }
