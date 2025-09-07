@@ -26,8 +26,8 @@
                 },
                 "background": {
                     "activeOnStart": true,
-                    "beginsPattern": "^.*Listening for",
-                    "endsPattern": "^.*transport dt_socket at address.*"
+                    "beginsPattern": "^Listening for transport dt_socket at",
+                    "endsPattern": "^Listening for transport dt_socket at"
                 }
             },
             "dependsOn": [
