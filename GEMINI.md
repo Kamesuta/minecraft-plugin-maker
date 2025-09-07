@@ -1,51 +1,75 @@
-# Your AI-Powered Minecraft Plugin Adventure!
+# AIと作るMinecraftプラグイン開発ガイド
 
-Welcome! This guide will walk you through customizing and building your first Minecraft plugin with the help of AI.
+# このテンプレートについて
 
-## Step 1: Configure Your Plugin
+このテンプレートは **Minecraft Paper プラグイン開発** 用です。  
+ユーザーは最初に `/setup` コマンドを実行して、作りたいプラグイン案から仕様書を自動生成します。  
+その後は **MVP実装 → F5で起動確認 → TODOから次を選んで実装** というサイクルで開発を進めます。  
 
-Your plugin needs a unique name and package structure. This is how it will be identified by the server and other plugins.
+---
 
-1.  **Set the Plugin Name:**
-    - Open the `src/main/resources/plugin.yml` file.
-    - Find the line `name: MyExamplePlugin`.
-    - Change `MyExamplePlugin` to your desired plugin name (e.g., `name: SuperJumpBoots`).
+# 開発サイクル
 
-2.  **Set the Main Class Path:**
-    - In the same `plugin.yml` file, find the `main` line.
-    - Change the package part of `mods.kpw.my_example_plugin.Main` to your new, unique package name. A common convention is `mods.kpw.pluginname`.
-    - For example: `main: mods.kpw.superjumpboots.Main`
+1. `/setup` → 仕様書作成  
+2. MVP 実装  
+3. `F5` でマイクラを起動し挙動確認  
+4. 仕様書の **TODO** から次の機能を選択  
+5. 実装 → 再度確認 → TODO更新  
+6. 完了するまでこのループを繰り返す  
 
-3.  **Update the Directory Structure:**
-    - Rename the directory `src/main/java/mods/kpw/my_example_plugin` to match the new package structure you defined in the previous step.
-    - For example: `src/main/java/mods/kpw/superjumpboots`
+---
 
-4.  **Update the Java Package:**
-    - Open the `Main.java` file located in your newly renamed directory.
-    - Change the package declaration at the top of the file to match your new package name.
-    - For example: `package mods.kpw.superjumpboots;`
+# 技術スタック
 
-**This configuration is mandatory!**
+- **言語**: Java 21  
+- **API**: Paper API 1.21.x  
+- **ビルドツール**: Maven（pom.xml）  
+- **プラグイン定義**: plugin.yml  
 
-## Step 2: Start Coding with AI
+---
 
-Now for the fun part! You can use Gemini to write or change the plugin's code.
+# ビルド方法
 
-**Example Prompt:**
+- プロジェクトルートで以下を実行:
+  ```bash
+  mvn package && ./scripts/copy_plugin.sh
+  ```
 
-> `@gemini please modify the Main.java file. When a player joins, greet them with a custom message.`
+* 各タスクが終わった後は、上記コマンドを打ってビルド確認をしてください。
+* 上記コマンドを打つと、実行中のMinecraftサーバーにプラグインが反映されます。
 
-Gemini will then modify `Main.java` to add this feature.
+---
 
-## Step 3: Build and Run Your Plugin
+# コメント・ログ・メッセージのルール（絶対）
 
-Once you've made your code changes, you need to build the plugin and test it.
+* **必ず日本語にすること！！！**
+* 対象:
 
-1.  **Build:** Press `Ctrl+Shift+B`. This will run the `Build Plugin` task, which compiles your code and packages it into a `.jar` file. The file will be placed in the `run/plugins/` directory.
+  * JavaDoc コメント
+  * コード内コメント
+  * ログ出力（`LOGGER.info`, `LOGGER.warning` など）
+  * プレイヤーへのメッセージ（`player.sendMessage`）
+* 英語はクラス名やAPI呼び出しなど、必要最小限に限定
+* 例:
 
-2.  **Run & Debug:**
-    - Press `F5` to start the Minecraft server in debug mode.
-    - The server will start in the background. You can see its output in the "Terminal" tab.
-    - You can now set breakpoints in your Java code and connect to the server in Minecraft to test your plugin.
+  ```java
+  // プレイヤーがしゃがんだときにアイテムを付与する処理
+  LOGGER.info("プレイヤーがしゃがんだのでアイテムを付与しました");
+  player.sendMessage("しゃがんだのでアイテムをゲット！");
+  ```
 
-Happy coding!
+---
+
+# TODO の扱い
+
+* 仕様書に書かれた TODO から次のタスクを選ぶ
+* 選んだタスクを実装し、終わったら仕様書を更新する
+* TODOは常に最新の状態に保つ
+
+---
+
+# 補足
+
+* 初心者でも理解できるように、説明や提案は簡潔に
+* 進行の節目ごとに「はい / いいえ」で確認を取る
+* 実装の進捗は短く報告する
