@@ -47,6 +47,8 @@ prompt = """
 3) ファイル作成：
    生成したMarkdown本文をそのまま使い、次を実行：
    !{bash -lc 'mkdir -p spec && cat > spec/仕様書.md <<\"MD\"\n<<SPEC_MARKDOWN>>\nMD'}
+4) 仕様書を開く:
+   !{bash -lc 'code spec/仕様書.md'}
 
 === フェーズD: 実装開始（MVPまで） ===
 1) 仕様の要点（機能 / MVP / TODOの要旨）を**5行以内**で提示し、
