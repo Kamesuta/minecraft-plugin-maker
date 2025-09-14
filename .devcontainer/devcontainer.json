@@ -1,8 +1,8 @@
 {
-	// Use a Docker image with Java 21 and other basic tools pre-installed.
+	// Java 21 や基本的なツールがプリインストールされたDockerイメージを使用します。
 	"image": "mcr.microsoft.com/devcontainers/java:21",
 
-	// Install Maven using devcontainer features.
+	// devcontainer features を使って Maven をインストールします。
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
 			"version": "none",
@@ -14,7 +14,7 @@
 		}
 	},
 
-	// Configure VSCode settings and extensions.
+	// VSCodeの設定と拡張機能を構成します。
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -28,16 +28,19 @@
 		}
 	},
 
-	// Commands to run after the container is created.
-	// 1. Download the latest PaperMC server jar (for Minecraft 1.21).
-	// 2. Automatically agree to the EULA to streamline the first server launch.
+	// コンテナ作成後に実行するコマンドです。
 	"postCreateCommand": "bash scripts/setup_devcontainer.sh",
 	"postAttachCommand": "bash scripts/configure_project.sh",
 
-	// Run as the default 'vscode' user.
+	// デフォルトの 'vscode' ユーザーとして実行します。
 	"remoteUser": "vscode",
 
-	// ポートに名前をつける
+	// 環境変数を設定します (scriptsディレクトリにPATHを通す)。
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:${containerWorkspaceFolder}/scripts"
+	},
+
+	// ポートに名前をつけます。
 	"portsAttributes": {
 		"25565": {
 			"label": "Minecraft",
