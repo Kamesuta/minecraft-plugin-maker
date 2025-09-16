@@ -14,7 +14,7 @@
         {
             "label": "Start Server",
             "type": "shell",
-            "command": "java -Xmx2G -Xms2G -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar paper.jar --nogui",
+            "command": "java -Xmx1G -Xms1G -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar paper.jar --nogui",
             "options": {
                 "cwd": "${workspaceFolder}/run"
             },

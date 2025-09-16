@@ -58,5 +58,24 @@ else
     echo "★ ディレクトリ '$OLD_DIR' が見つからないため、リネームをスキップします。"
 fi
 
+# サーバーが起動中ならビルド＆リロード
+# プラグインがリネームされると、AutoReloadプラグインが効かなくなる。そのためスクリプトでリロードする。
+if rcon.sh "list" > /dev/null 2>&1; then
+    echo ""
+    echo "★ Minecraftサーバーが起動中なので、プラグインをビルド＆リロードします..."
+
+    # アンロード
+    rcon.sh "plugman unload $OLD_PLUGIN_NAME"
+
+    # ビルドとロード
+    if mvn package && ./scripts/copy_plugin.sh; then
+        echo "★ ビルド成功。プラグインをリロードします..."
+        rcon.sh "plugman load $NEW_PLUGIN_NAME"
+        echo "★ プラグインをリロードしました。"
+    else
+        echo "★ ビルドに失敗しました。リロードは行いません。"
+    fi
+fi
+
 echo ""
 echo "★ プラグイン名の変更が完了しました。変更内容を確認してください。"
