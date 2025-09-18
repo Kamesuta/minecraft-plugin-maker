@@ -83,3 +83,8 @@
 
 ### スクリプトの実行
 - `scripts` フォルダにPATHが通っているため、`rcon.sh`, `copy_plugin.sh` などのスクリプトは、プロジェクト内のどのディレクトリからでもパスを指定せずに直接実行できます。
+
+### Minecraftソースの確認
+- **実行コマンド**: `mvn generate-sources`
+- **実行方法**: プロジェクトのルートディレクトリで上記コマンドを実行してください。これにより、Paper, Spigot および Bukkit のソースコードが `${project.build.directory}/vendor-sources` (通常は `target/vendor-sources`) に展開されます。
+- **確認方法**: 展開後、`target/vendor-sources` ディレクトリの内容を確認してください。ビルドエラーなどが発生した場合は、これらのソースを参照してください。
