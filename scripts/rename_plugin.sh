@@ -11,7 +11,15 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
+OLD_PLUGIN_NAME="MyExamplePlugin"
+OLD_ARTIFACT_NAME="my_example_plugin"
 NEW_PLUGIN_NAME=$1
+
+# --- リネーム済みかチェック ---
+if ! grep -q "$OLD_PLUGIN_NAME" pom.xml; then
+    echo "★ プラグインは既にリネーム済みです。処理をスキップします。"
+    exit 0
+fi
 
 # --- バリデーション処理 ---
 # 1. 英数字のみかチェック
@@ -29,9 +37,6 @@ fi
 
 # アーティファクト名を生成します（英字以外を削除し、小文字に変換）
 NEW_ARTIFACT_NAME=$(echo "$NEW_PLUGIN_NAME" | sed 's/[^a-zA-Z]//g' | tr '[:upper:]' '[:lower:]')
-
-OLD_PLUGIN_NAME="MyExamplePlugin"
-OLD_ARTIFACT_NAME="my_example_plugin"
 
 echo "★ 新しいプラグイン名: $NEW_PLUGIN_NAME"
 echo "★ 新しいアーティファクト名: $NEW_ARTIFACT_NAME"
@@ -52,6 +57,7 @@ NEW_DIR="src/main/java/mods/kpw/$NEW_ARTIFACT_NAME"
 if [ -d "$OLD_DIR" ]; then
     echo ""
     echo "★ ディレクトリ名を変更しています: '$OLD_DIR' -> '$NEW_DIR'..."
+    rm -rf "$NEW_DIR" # 既存の新ディレクトリがあれば削除
     mv "$OLD_DIR" "$NEW_DIR"
 else
     echo ""
