@@ -13,6 +13,9 @@ sudo apt-get install -y libxext6 libxrender1 libxtst6 libxi6
 # Gemini CLIをインストール
 echo "★ Gemini CLIをインストールしています..."
 npm install -g @google/gemini-cli
+# Gemini CLIがVSCodeに接続できない不具合ワークアラウンド
+# https://github.com/google-gemini/gemini-cli/issues/6297#issuecomment-3227097271
+echo "127.0.0.1 host.docker.internal" | sudo tee -a /etc/hosts
 
 # Set up the Minecraft server environment
 ./scripts/setup_server.sh
