@@ -29,8 +29,7 @@
 	},
 
 	// コンテナ作成後に実行するコマンドです。
-	"postCreateCommand": "bash scripts/setup_devcontainer.sh",
-	"postAttachCommand": "bash scripts/configure_project.sh",
+	"postCreateCommand": "setup_devcontainer.sh",
 
 	// デフォルトの 'vscode' ユーザーとして実行します。
 	"remoteUser": "vscode",
