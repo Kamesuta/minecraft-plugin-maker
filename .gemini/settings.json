@@ -1,10 +1,7 @@
 {
   "mcpServers": {
     "debug": {
-      "command": "node",
-      "args": [
-        "/home/vscode/.vscode-server/data/User/globalStorage/jasonmcghee.claude-debugs-for-you/mcp-debug.js"
-      ]
+      "command": "mcp-debug.sh"
     }
   }
 }
