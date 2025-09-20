@@ -35,8 +35,10 @@ prompt = """
 3) "__RENAME_FAILED__" が出た場合は、別の新しい名前を考えて再実行してください。成功するまで最大3回。
 
 === フェーズC: 仕様書の作成 ===
-1) ヒアリング結果をもとに、**spec/仕様書.md** をMarkdownで作成します。
-2) 見出しテンプレート：
+1) specフォルダがなければ作成する。
+   !{bash -lc 'mkdir -p spec'}
+2) ヒアリング結果をもとに、**spec/仕様書.md** をMarkdownで作成します。
+3) 見出しテンプレート：
    - タイトル: <PluginName>
    - 概要（2-3行）
    - 主な機能（箇条書き）
@@ -44,9 +46,6 @@ prompt = """
    - 設定例（config.yml の主要キー）
    - MVP（最初に作る最小機能）
    - TODO（5〜10項目；MVP以外）
-3) ファイル作成：
-   生成したMarkdown本文をそのまま使い、次を実行：
-   !{bash -lc 'mkdir -p spec && cat > spec/仕様書.md <<\"MD\"\n<<SPEC_MARKDOWN>>\nMD'}
 4) 仕様書を開く:
    !{bash -lc 'code spec/仕様書.md'}
 
