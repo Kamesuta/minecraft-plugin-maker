@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # GitHub Codespaces とローカルの DevContainer 環境の両方で VSCode拡張機能「Claude Debugs For You」を動作させるためのラッパースクリプト
-set -euo pipefail
+set -e
 
 # 環境に応じてVSCodeの拡張機能が格納されているベースディレクトリを特定する
 # Codespacesの場合は ~/.vscode-remote, ローカルのDevContainerの場合は ~/.vscode-server を使用する

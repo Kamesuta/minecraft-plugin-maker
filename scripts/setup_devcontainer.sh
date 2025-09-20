@@ -1,25 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# DevContainer環境のセットアップ
 set -e
 
-# scriptsフォルダ内のすべてのスクリプトに実行権限を付与
-echo "★ scriptsフォルダ内のスクリプトに実行権限を付与しています..."
+# scriptsフォルダ内のスクリプトに実行権限を付与
+echo "★ scriptsフォルダ内のスクリプトに実行権限を付与中..."
 chmod +x scripts/*
 
-# ヘッドレスJava GUIの依存関係(マイクラサーバー起動に必要)をインストール
-echo "★ マイクラサーバーの起動に必要なパッケージをインストールしています..."
+# ヘッドレスJava GUIの依存関係インストール（Minecraftサーバー起動に必要）
+echo "★ Minecraftサーバー起動に必要なパッケージをインストール中..."
 sudo apt-get update
 sudo apt-get install -y libxext6 libxrender1 libxtst6 libxi6
 
-# Gemini CLIをインストール
-echo "★ Gemini CLIをインストールしています..."
+# Gemini CLIインストール
+echo "★ Gemini CLIをインストール中..."
 npm install -g @google/gemini-cli
-# Gemini CLIがVSCodeに接続できない不具合ワークアラウンド
-# https://github.com/google-gemini/gemini-cli/issues/6297#issuecomment-3227097271
+
+# Gemini CLIがVSCodeに接続できない問題のワークアラウンド適用
+# 詳細: https://github.com/google-gemini/gemini-cli/issues/6297#issuecomment-3227097271
 echo "127.0.0.1 host.docker.internal" | sudo tee -a /etc/hosts
 
-# Set up the Minecraft server environment
+# Minecraftサーバー環境のセットアップ実行
 setup_server.sh
 
-
-
-echo "★ セットアップスクリプトが完了しました。"
+echo "★ セットアップスクリプト完了。"

@@ -1,20 +1,24 @@
 #!/bin/bash
+# MinecraftサーバーにRCON (Remote Console) 経由でコマンドを送信するためのスクリプト
+set -e
 
 # RCONのパスワードを設定
-# run/server.propertiesのrcon.passwordと合わせてください
+# このパスワードは、`run/server.properties` ファイル内の `rcon.password` の設定と一致している必要がある
 RCON_PASSWORD="gemini"
 
-# mcrconのパス
+# mcrconユーティリティへのパスを定義
+# このスクリプトと同じディレクトリにあるmcrconバイナリを使用
 MCRCON_PATH="$(dirname "$0")/mcrcon"
 
-# 引数がなければ使い方を表示
+# 引数が指定されていない場合、スクリプトの正しい使い方を表示して終了
 if [ $# -eq 0 ]; then
   echo "使い方: $0 \"コマンド1\" \"コマンド2\" ..."
   echo "MinecraftサーバーにRCON経由でコマンドを送信します。"
   exit 1
 fi
 
-# コマンドのバリデーション
+# 送信するコマンドのバリデーションを行う
+# 特定のコマンド（reload, stop）は、意図しないサーバーの挙動を防ぐために禁止
 for cmd in "$@"; do
   if [[ "$cmd" == "reload" || "$cmd" == "reload confirm" ]]; then
     echo "Error: 'reload' or 'reload confirm' commands are not allowed. Use 'plugman reload <PluginName>' instead."
