@@ -5,6 +5,8 @@ set -e
 # scriptsフォルダ内のスクリプトに実行権限を付与
 echo "★ scriptsフォルダ内のスクリプトに実行権限を付与中..."
 chmod +x scripts/*
+# gitでパーミッションを無視するように設定
+git config core.fileMode false
 
 # ヘッドレスJava GUIの依存関係インストール（Minecraftサーバー起動に必要）
 echo "★ Minecraftサーバー起動に必要なパッケージをインストール中..."
