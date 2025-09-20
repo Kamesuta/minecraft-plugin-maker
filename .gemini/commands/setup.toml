@@ -11,7 +11,7 @@ description = "最初に叩くコマンド。作りたいプラグイン案を�
 
 prompt = """
 `spec/仕様書.md` の存在を確認し、`__SPEC_EXISTS__` が出力されたた場合、フェーズF までスキップしてください。
-!{bash -lc 'if [ -f spec/仕様書.md ]; then echo "__SPEC_EXISTS__"; fi'}
+!{bash -lc 'if [ -f spec/仕様書.md ]; then echo "__SPEC_EXISTS__"; else echo "__SPEC_NOT_EXISTS__"; fi'}
 
 
 あなたはこのテンプレートのセットアップ係です。常に日本語で、簡潔に進めてください。
@@ -35,7 +35,7 @@ prompt = """
 1) 回答を参考に、**英数字のみの英語PascalCase名**を**あなたが考えて**1つ決定してください。
    （例: SneakItemDrop, BlockThrower など）
 2) 決めた名前を <PluginName> として実行：
-   !{bash -lc 'rename_plugin.sh "<PluginName>" || echo "__RENAME_FAILED__"'}
+   コマンド: `rename_plugin.sh "<PluginName>" || echo "__RENAME_FAILED__"`
 3) "__RENAME_FAILED__" が出た場合は、別の新しい名前を考えて再実行してください。成功するまで最大3回。
 
 === フェーズC: 仕様書の作成 ===
@@ -50,8 +50,8 @@ prompt = """
    - 設定例（config.yml の主要キー）
    - MVP（最初に作る最小機能）
    - TODO（5〜10項目；MVP以外）
-4) 仕様書を開く:
-   !{bash -lc 'code spec/仕様書.md'}
+4) ユーザー向けに仕様書を見せる:
+   コマンド: `code "spec/仕様書.md"`
 
 === フェーズD: 実装開始（MVPまで） ===
 1) 仕様の要点（機能 / MVP / TODOの要旨）を**5行以内**で提示し、
@@ -66,7 +66,8 @@ prompt = """
 
 === フェーズE: MVP後のデバッグ ===
 1) MVPが完了したら、デバッグフェーズに移ります。
-   !{bash -lc 'rcon.sh list || echo "__RCON_FAILED__"'} を実行してサーバーの起動状態を確認します。
+   サーバーの起動状態を確認します。
+   コマンド: `rcon.sh list || echo "__RCON_FAILED__"`
    - もしサーバーが起動していれば（`__RCON_FAILED__`が出力されなければ）、`rcon.sh` を使ってMVPの挙動を確認するコマンドを実行し、その結果を報告してください。その後、手順4に進みます。
    - もしサーバーが起動していなければ（`__RCON_FAILED__`が出力されれば）、
       「
