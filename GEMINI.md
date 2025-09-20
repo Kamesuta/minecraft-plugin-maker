@@ -84,6 +84,11 @@
 ### スクリプトの実行
 - `scripts` フォルダにPATHが通っているため、`rcon.sh`, `copy_plugin.sh` などのスクリプトは、プロジェクト内のどのディレクトリからでもパスを指定せずに直接実行できます。
 
+### デバッグ実行 (MCP連携)
+- MCP「claude-debugs-for-you」がインストールされています。
+- ブレークポイントの操作が可能ですので、必要に応じて使用してください。
+- サーバーが起動している必要があります。起動していない場合は、ユーザーにF5を押すよう促してください。
+
 ### Minecraftソースの確認
 - **実行コマンド**: `mvn dependency:unpack-dependencies`
 - **実行方法**: プロジェクトのルートディレクトリで上記コマンドを実行してください。これにより、Paper, Spigot および Bukkit のソースコードが `${project.build.directory}/vendor-sources` (通常は `target/vendor-sources`) に展開されます。
