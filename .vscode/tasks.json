@@ -4,7 +4,7 @@
         {
             "label": "Build Plugin",
             "type": "shell",
-            "command": "mvn package && ./scripts/copy_plugin.sh",
+            "command": "build.sh",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -37,7 +37,7 @@
         {
             "label": "Open Port",
             "type": "shell",
-            "command": "./scripts/securesharenet",
+            "command": "securesharenet",
             "isBackground": true,
             "problemMatcher": {
                 "owner": "secure-share-net",

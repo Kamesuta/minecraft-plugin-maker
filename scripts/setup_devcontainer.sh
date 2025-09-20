@@ -18,7 +18,7 @@ npm install -g @google/gemini-cli
 echo "127.0.0.1 host.docker.internal" | sudo tee -a /etc/hosts
 
 # Set up the Minecraft server environment
-./scripts/setup_server.sh
+setup_server.sh
 
 
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # このスクリプトはプラグイン名を変更します。
-# 使い方: ./scripts/rename_plugin.sh <新しいプラグイン名>
+# 使い方: rename_plugin.sh <新しいプラグイン名>
 
 set -e # エラーが発生した時点でスクリプトを終了します
 
@@ -74,7 +74,7 @@ if rcon.sh "list" > /dev/null 2>&1; then
     rcon.sh "plugman unload $OLD_PLUGIN_NAME"
 
     # ビルドとロード
-    if mvn package && ./scripts/copy_plugin.sh; then
+    if build.sh; then
         echo "★ ビルド成功。プラグインをリロードします..."
         rcon.sh "plugman load $NEW_PLUGIN_NAME"
         echo "★ プラグインをリロードしました。"
