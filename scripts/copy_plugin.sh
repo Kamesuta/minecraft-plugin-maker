@@ -2,14 +2,19 @@
 # ビルド済みプラグインJARファイルのコピー
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+cd "$ROOT_DIR"
+
 # targetディレクトリから最新のJARファイルを検索（original-*.jarは除外）
-SOURCE_JAR=$(find target -maxdepth 1 -name "*.jar" ! -name "original-*.jar" -printf '%T@ %p\n' | sort -n -r | head -n 1 | cut -d' ' -f2-)
+SOURCE_JAR=$(find target -maxdepth 1 -type f -name "*.jar" ! -name "original-*.jar" -print0 | xargs -0 ls -t | head -n 1)
 
 # コピー先パス
 DEST_JAR="run/plugins/Plugin.jar"
 
 # ソースJARファイルの存在確認とコピー実行
-if [ -f "$SOURCE_JAR" ]; then
+if [ -n "$SOURCE_JAR" ] && [ -f "$SOURCE_JAR" ]; then
     cp "$SOURCE_JAR" "$DEST_JAR"
     echo "★ プラグインをコピーしました: $SOURCE_JAR -> $DEST_JAR"
 else
