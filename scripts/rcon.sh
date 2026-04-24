@@ -18,12 +18,8 @@ if [ $# -eq 0 ]; then
 fi
 
 # 送信するコマンドのバリデーションを行う
-# 特定のコマンド（reload, stop）は、意図しないサーバーの挙動を防ぐために禁止
+# stop だけは禁止しておく
 cmd="$*"
-if [[ "$cmd" == "reload" || "$cmd" == "reload confirm" ]]; then
-  echo "Error: 'reload' or 'reload confirm' commands are not allowed. Use 'plugman reload <PluginName>' instead."
-  exit 1
-fi
 if [[ "$cmd" == "stop" ]]; then
   echo "Error: 'stop' command is not allowed. To restart the server, you need to manually type 'stop' and then press F5."
   exit 1
